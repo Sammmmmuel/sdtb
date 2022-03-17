@@ -1,3 +1,4 @@
+const dotenv = require('dotenv').config()
 const Discord = require('discord.js')
 
 const { Client, Intents } = require('discord.js');
@@ -19,4 +20,4 @@ client.once('ready', () => {
 
 
 
-client.login('OTUzODczNzYxMzk0ODkyODEx.YjK6Kg.F2CMStZqWnHb-jTbKgyoY1itK50')
+client.login(process.env.SECRET_KEY)
