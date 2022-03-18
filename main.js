@@ -6,9 +6,8 @@ const client = new Discord.Client({intents: ["GUILDS", "GUILD_MESSAGES"]});
 const prefix = '!'
 
 client.once('ready', () => {
-    console.log('Bot is on')
+    console.log('Bot is on !')
 })
-
 
 client.on("messageCreate", function(message) {
     if (message.author.bot) return;
@@ -27,6 +26,27 @@ client.on("messageCreate", function(message) {
         const sum = numArgs.reduce((counter, x) => counter += x);
         message.reply(`The sum of all the arguments you provided is ${sum}!`);
     }
+
+    if (command === "typerace") {
+        message.reply(`Who can type this the fastest!`);
+    } 
+        
+
+});
+
+client.on('messageCreate', (message) => {
+    if(message.author.bot) {
+        return;
+    } else if (message.content.toLowerCase().includes('typerace')) {
+			message.channel.send('The lazy fox jumped over the brown dog');
+	} else if (message.content === 'The lazy fox jumped over the brown dog') {
+            message.channel.send('Good Job !');
+}
+});
+
+
+client.login(process.env.CLIENT_TOKEN).then(() => {
+    client.user.setPresence({ activities: [{ name: 'apex legends', type: 'PLAYING' }], status: 'online' });
 });
 
 client.login(process.env.CLIENT_TOKEN)
